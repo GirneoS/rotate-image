@@ -42,8 +42,7 @@ int main( int argc, char** argv ) {
     }
 
     free_img_data(&init_image);
-    if(strcmp(transform_mode, "none") != 0)
-        free_img_data(&transformed_image);
+    free_img_data(&transformed_image);
 
     return 0;
 }
