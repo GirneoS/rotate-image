@@ -30,7 +30,6 @@ enum read_status from_bmp(FILE* in, struct image* img){
         fseek(in,  padding_size, SEEK_CUR);
     }
 
-    fclose(in);
     return READ_OK;
 }
 
