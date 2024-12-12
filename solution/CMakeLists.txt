@@ -17,6 +17,5 @@ add_executable(image-transform ${sources}
         src/transformation/flip_h.c
         src/transformation/flip_v.c
         include/transformations.h
-        src/transformation/none.c
 )
 target_include_directories(image-transform PRIVATE src include)
