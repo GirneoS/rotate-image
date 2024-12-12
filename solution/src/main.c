@@ -33,16 +33,14 @@ int main( int argc, char** argv ) {
         flip_v(&init_image, &transformed_image);
     if(strcmp(transform_mode, "none") == 0)
         none(&init_image, &transformed_image);
+    free_img_data(&init_image);
 
     enum write_status write_result = write_img(dest_path, &transformed_image);
     if(write_result != WRITE_OK) {
-        free_img_data(&init_image);
         free_img_data(&transformed_image);
         return 3;
     }
 
-    free_img_data(&init_image);
     free_img_data(&transformed_image);
-
     return 0;
 }
