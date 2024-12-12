@@ -21,7 +21,7 @@ int main( int argc, char** argv ) {
     if(read_result == READ_INVALID_HEADER || read_result == READ_INVALID_BITS || read_result == READ_INVALID_SIGNATURE)
         return 12;
 
-    struct image transformed_image = {0};
+    struct image transformed_image = init_image;
 
     if (strcmp(transform_mode, "cw90") == 0)
         cw_90(&init_image, &transformed_image);
@@ -31,9 +31,6 @@ int main( int argc, char** argv ) {
         flip_h(&init_image, &transformed_image);
     if(strcmp(transform_mode, "flipv") == 0)
         flip_v(&init_image, &transformed_image);
-    if(strcmp(transform_mode, "none") == 0)
-        none(&init_image, &transformed_image);
-    free_img_data(&init_image);
 
     enum write_status write_result = write_img(dest_path, &transformed_image);
     if(write_result != WRITE_OK) {
@@ -41,6 +38,9 @@ int main( int argc, char** argv ) {
         return 3;
     }
 
-    free_img_data(&transformed_image);
+    free_img_data(&init_image);
+    if(strcmp(transform_mode, "none") != 0)
+        free_img_data(&transformed_image);
+
     return 0;
 }
