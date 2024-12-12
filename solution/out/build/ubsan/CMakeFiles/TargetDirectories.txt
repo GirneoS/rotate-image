@@ -1,0 +1,3 @@
+/Users/mak/CLionProjects/assignment-3-image-transform/solution/out/build/ubsan/CMakeFiles/image-transform.dir
+/Users/mak/CLionProjects/assignment-3-image-transform/solution/out/build/ubsan/CMakeFiles/edit_cache.dir
+/Users/mak/CLionProjects/assignment-3-image-transform/solution/out/build/ubsan/CMakeFiles/rebuild_cache.dir
