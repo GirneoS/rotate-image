@@ -1,8 +1,8 @@
 //
 // Created by мак on 12.12.2024.
 //
-#include <stdlib.h>
 #include <image.h>
+#include <stdlib.h>
 
 void ccw_90(struct image* init_img, struct image* transformed_img){
     transformed_img->height = init_img->width;

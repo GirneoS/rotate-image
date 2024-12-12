@@ -4,7 +4,6 @@
 
 #ifndef ASSIGNMENT_3_IMAGE_TRANSFORM_IMAGE_H
 #define ASSIGNMENT_3_IMAGE_TRANSFORM_IMAGE_H
-
 #include <stdint.h>
 
 struct pixel { uint8_t b,g,r; };

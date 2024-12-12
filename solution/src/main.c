@@ -1,8 +1,8 @@
 #include "image.h"
 #include <io.h>
 #include <string.h>
-#include <utils.h>
 #include <transformations.h>
+#include <utils.h>
 
 
 int main( int argc, char** argv ) {

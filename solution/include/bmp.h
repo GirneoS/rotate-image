@@ -6,9 +6,9 @@
 #define ASSIGNMENT_3_IMAGE_TRANSFORM_BMP_H
 
 #include <image.h>
-#include <stdlib.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 
 struct __attribute__((packed))
