@@ -35,7 +35,9 @@ enum read_status  {
     READ_INVALID_SIGNATURE,
     READ_INVALID_BITS,
     READ_INVALID_HEADER,
-    READ_OPEN_FAIL
+    READ_OPEN_FAIL,
+    READ_ERROR,
+    NOT_ENOUGH_MEMORY
 };
 
 enum  write_status  {

@@ -17,17 +17,27 @@ enum read_status from_bmp(FILE* in, struct image* img){
     img->height = headers.biHeight;
     img->width = headers.biWidth;
     img->data = malloc(img->height * sizeof(struct pixel*));
+    if(img->data == NULL) return NOT_ENOUGH_MEMORY;
+
     for (size_t i = 0; i < img->height; ++i) {
         img->data[i] = malloc(img->width * sizeof(struct pixel));
+        if(img->data[i] == NULL) return NOT_ENOUGH_MEMORY;
     }
 
     uint32_t padding_size = (4 - (img->width * 3) % 4) % 4;
 
     for(int i = 0; i < img->height; i++){
         for (size_t j = 0; j < img->width; j++) {
-            fread(&(img->data[i][j]), sizeof(struct pixel), 1, in);
+            size_t r = fread(&(img->data[i][j]), sizeof(struct pixel), 1, in);
+            if(ferror(in))
+                return READ_ERROR;
+            if(r<=0)
+                return READ_ERROR;
         }
         fseek(in,  padding_size, SEEK_CUR);
+        if(ferror(in))
+            return READ_ERROR;
+
     }
 
     return READ_OK;

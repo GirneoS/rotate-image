@@ -20,6 +20,8 @@ int main( int argc, char** argv ) {
         return 2;
     if(read_result == READ_INVALID_HEADER || read_result == READ_INVALID_BITS || read_result == READ_INVALID_SIGNATURE)
         return 12;
+    if(read_result != 0)
+        return NOT_ENOUGH_MEMORY;
 
     struct image transformed_image = init_image;
 
@@ -35,7 +37,7 @@ int main( int argc, char** argv ) {
     enum write_status write_result = write_img(dest_path, &transformed_image);
     if(write_result != WRITE_OK) {
         free_img_data(&transformed_image);
-        return 3;
+        return write_result;
     }
 
     free_img_data(&init_image);
