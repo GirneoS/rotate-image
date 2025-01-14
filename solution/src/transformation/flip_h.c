@@ -4,14 +4,14 @@
 #include <image.h>
 #include <stdlib.h>
 
-struct transformation_result flip_h(struct image* init_img, struct image* transformed_img){
+enum transformation_status flip_h(struct image* init_img, struct image* transformed_img){
     transformed_img->height = init_img->height;
     transformed_img->width = init_img->width;
     transformed_img->data = malloc(transformed_img->height * sizeof(struct pixel*));
-    if(transformed_img->data == NULL) return (struct transformation_result){.status=TRANSFORMATION_MALLOC_FAIL, .image=NULL};
+    if(transformed_img->data == NULL) return TRANSFORMATION_MALLOC_FAIL;
 
     struct pixel* pixel_space = malloc(transformed_img->height * transformed_img->width * sizeof(struct pixel));
-    if(pixel_space == NULL) return (struct transformation_result){.status=TRANSFORMATION_MALLOC_FAIL, .image=NULL};
+    if(pixel_space == NULL) return TRANSFORMATION_MALLOC_FAIL;
 
     for (size_t i = 0; i < transformed_img->height; i++) {
         transformed_img->data[i] = pixel_space + i*transformed_img->width;
@@ -22,5 +22,5 @@ struct transformation_result flip_h(struct image* init_img, struct image* transf
             transformed_img->data[i][init_img->width - 1 - j] = init_img->data[i][j];
     }
 
-    return (struct transformation_result){.status=TRANSFORMATION_OK, .image=transformed_img};
+    return TRANSFORMATION_OK;
 }
