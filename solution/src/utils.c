@@ -5,8 +5,9 @@
 #include <utils.h>
 
 void free_img_data(struct image* image){
-    for (size_t i = 0; i < image->height; i++) {
+    for (int i = 0; i < image->height; ++i) {
         free(image->data[i]);
     }
+
     free(image->data);
 }
