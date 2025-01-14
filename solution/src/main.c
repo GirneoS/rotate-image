@@ -39,8 +39,11 @@ int main( int argc, char** argv ) {
     struct image transformed_image =  init_image;
     enum transformation_status status = transform_image(&init_image, &transformed_image, transform_mode);
 
-    if(status != TRANSFORMATION_OK)
+    if(status != TRANSFORMATION_OK) {
+        free_img_data(&init_image);
+        free_img_data(&transformed_image);
         return status;
+    }
 
     enum write_status write_result = write_img(dest_path, &transformed_image);
     if(write_result != WRITE_OK) {
