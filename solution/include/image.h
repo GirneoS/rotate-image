@@ -12,4 +12,13 @@ struct image {
     struct pixel** data;
 };
 
+enum transformation_status {
+    TRANSFORMATION_OK,
+    TRANSFORMATION_MALLOC_FAIL
+};
+struct transformation_result{
+    enum transformation_status status;
+    struct image* image;
+};
+
 #endif //ASSIGNMENT_3_IMAGE_TRANSFORM_IMAGE_H
