@@ -4,9 +4,22 @@
 #include <transformations.h>
 #include <utils.h>
 
+struct image transform_image(struct image init_image, char* transform_mode){
+    struct image transformed_image = init_image;
+
+    if (strcmp(transform_mode, "cw90") == 0)
+        cw_90(&init_image, &transformed_image);
+    if(strcmp(transform_mode, "ccw90") == 0)
+        ccw_90(&init_image, &transformed_image);
+    if (strcmp(transform_mode, "fliph") == 0)
+        flip_h(&init_image, &transformed_image);
+    if(strcmp(transform_mode, "flipv") == 0)
+        flip_v(&init_image, &transformed_image);
+
+    return transformed_image;
+}
 
 int main( int argc, char** argv ) {
-
     if (argc != 4){
         return 1;
     }
@@ -23,16 +36,7 @@ int main( int argc, char** argv ) {
     if(read_result != 0)
         return NOT_ENOUGH_MEMORY;
 
-    struct image transformed_image = init_image;
-
-    if (strcmp(transform_mode, "cw90") == 0)
-        cw_90(&init_image, &transformed_image);
-    if(strcmp(transform_mode, "ccw90") == 0)
-        ccw_90(&init_image, &transformed_image);
-    if (strcmp(transform_mode, "fliph") == 0)
-        flip_h(&init_image, &transformed_image);
-    if(strcmp(transform_mode, "flipv") == 0)
-        flip_v(&init_image, &transformed_image);
+    struct image transformed_image = transform_image(init_image, transform_mode);
 
     enum write_status write_result = write_img(dest_path, &transformed_image);
     if(write_result != WRITE_OK) {
@@ -46,3 +50,4 @@ int main( int argc, char** argv ) {
 
     return 0;
 }
+

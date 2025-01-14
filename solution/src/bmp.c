@@ -9,9 +9,9 @@ enum read_status from_bmp(FILE* in, struct image* img){
 
     if(fread(&headers, sizeof(struct bmp_header), 1, in) != 1 || headers.bfileSize <= 54)
         return READ_INVALID_HEADER;
-    if (headers.biBitCount != 24 || headers.biPlanes != 1)
+    if (headers.biBitCount != THREE_BYTES_PER_PIXEL || headers.biPlanes != 1)
         return READ_INVALID_BITS;
-    if (headers.bfType != 0x4D42)
+    if (headers.bfType != BMP_FILE_TYPE)
         return READ_INVALID_SIGNATURE;
 
     img->height = headers.biHeight;

@@ -30,6 +30,9 @@ struct __attribute__((packed))
         uint32_t biClrImportant;
 };
 
+#define THREE_BYTES_PER_PIXEL 24
+#define BMP_FILE_TYPE 0x4D42
+
 enum read_status  {
     READ_OK = 0,
     READ_INVALID_SIGNATURE,
