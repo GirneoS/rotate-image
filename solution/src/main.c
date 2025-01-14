@@ -33,8 +33,10 @@ int main( int argc, char** argv ) {
         return 2;
     if(read_result == READ_INVALID_HEADER || read_result == READ_INVALID_BITS || read_result == READ_INVALID_SIGNATURE)
         return 12;
-    if(read_result != 0)
+    if(read_result != 0) {
+        free_img_data(&init_image);
         return NOT_ENOUGH_MEMORY;
+    }
 
     struct image transformed_image =  init_image;
     enum transformation_status status = transform_image(&init_image, &transformed_image, transform_mode);
