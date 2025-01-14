@@ -1,8 +1,0 @@
-# ninja log v5
-1	18	0	/Users/mak/CLionProjects/assignment-3-image-transform/solution/out/build/debug/CMakeFiles/cmake.verify_globs	bf48db1c89b1d8d4
-0	21	0	/Users/mak/CLionProjects/assignment-3-image-transform/solution/out/build/debug/CMakeFiles/cmake.verify_globs	bf48db1c89b1d8d4
-0	138	1733829910901090238	CMakeFiles/image-transform.dir/src/main.o	979e364b7a7ff783
-138	246	1733829911009341163	image-transform	ab670f16d86729aa
-0	20	0	/Users/mak/CLionProjects/assignment-3-image-transform/solution/out/build/debug/CMakeFiles/cmake.verify_globs	bf48db1c89b1d8d4
-0	55	1733829940544616063	CMakeFiles/image-transform.dir/src/main.o	979e364b7a7ff783
-55	103	1733829940592350771	image-transform	ab670f16d86729aa
