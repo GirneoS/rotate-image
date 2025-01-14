@@ -13,7 +13,7 @@ struct transformation_result flip_h(struct image* init_img, struct image* transf
     struct pixel* pixel_space = malloc(transformed_img->height * transformed_img->width * sizeof(struct pixel));
     if(pixel_space == NULL) return (struct transformation_result){.status=TRANSFORMATION_MALLOC_FAIL, .image=NULL};
 
-    for (int i = 0; i < transformed_img->height; i++) {
+    for (size_t i = 0; i < transformed_img->height; i++) {
         transformed_img->data[i] = pixel_space + i*transformed_img->width;
     }
 
